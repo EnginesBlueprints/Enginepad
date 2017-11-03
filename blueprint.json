@@ -25,7 +25,7 @@
         "label": "Enginepad License"
       }
     },
-    "timestamp": "2017-11-03T17:38:59+11:00"
+    "timestamp": "2017-11-03T18:00:27+11:00"
   },
   "software": {
     "base": {
@@ -39,6 +39,12 @@
         "recommended": 500
       },
       "installation_report": "Enjoy."
+    },
+    "scripts": {
+      "start": {
+        "language": "sh",
+        "content": "#!/bin/bash\r\ncd /home/app\r\ngit pull\r\nrake exec bundle --standalone\r\n"
+      }
     },
     "installed_packages": [
       {
