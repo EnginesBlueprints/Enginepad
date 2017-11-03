@@ -25,7 +25,7 @@
         "label": "Enginepad License"
       }
     },
-    "timestamp": "2017-11-03T17:33:38+11:00"
+    "timestamp": "2017-11-03T17:38:59+11:00"
   },
   "software": {
     "base": {
@@ -42,11 +42,11 @@
     },
     "installed_packages": [
       {
-        "name": "Enginepad",
-        "source_url": "https://lachdoug.github.com/Enginepad",
+        "name": "ChatStudio",
+        "source_url": "https://github.com/lachdoug/ChatStudio.git",
         "destination": "./",
         "extraction_command": "git",
-        "path_to_extracted": "Enginepad"
+        "path_to_extracted": "ChatStudio"
       }
     ],
     "service_configurations": [
