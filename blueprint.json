@@ -15,12 +15,98 @@
         "level": "alpha",
         "patch": 0
       }
-    }
+    },
+    "software": {
+      "display": {
+        "title": "Enginepad",
+        "version": "0"
+      },
+      "license": {
+        "label": "Enginepad License"
+      }
+    },
+    "timestamp": "2017-11-03T17:33:38+11:00"
   },
   "software": {
     "base": {
+      "name": "enginepad",
+      "framework": "rails5",
       "deployment_type": "web",
-      "http_protocol": "https_and_http"
+      "http_protocol": "https_and_http",
+      "continuous_deployment": true,
+      "memory": {
+        "required": 384,
+        "recommended": 500
+      },
+      "installation_report": "Enjoy."
+    },
+    "installed_packages": [
+      {
+        "name": "Enginepad",
+        "source_url": "https://lachdoug.github.com/Enginepad",
+        "destination": "./",
+        "extraction_command": "git",
+        "path_to_extracted": "Enginepad"
+      }
+    ],
+    "service_configurations": [
+      {
+        "publisher_namespace": "EnginesSystem",
+        "type_path": "database/sql/mysql",
+        "variables": {
+          "db_flavor": "mysql2",
+          "db_password": "_Engines_System(random(10))",
+          "collation": "utf8_general_ci",
+          "full_access": "false",
+          "name": "_Engines_Builder(engine_name)",
+          "database_host": "_Engines_System(mysql_host)",
+          "db_username": "_Engines_Builder(engine_name)",
+          "database_name": "_Engines_Builder(engine_name)"
+        }
+      },
+      {
+        "publisher_namespace": "EnginesSystem",
+        "type_path": "filesystem/local/filesystem",
+        "variables": {
+          "service_name": "_Engines_Builder(engine_name)",
+          "volume_src": "",
+          "engine_path": "/home/fs/data",
+          "permissions": "rw",
+          "user": "_Engines_Builder(data_uid)",
+          "group": "_Engines_Builder(data_gid)"
+        }
+      }
+    ],
+    "environment_variables": [
+      {
+        "name": "ENGINEPAD_WORKSHOP_KEY",
+        "value": "_EnginesSystem(random(6))",
+        "mandatory": true,
+        "ask_at_build_time": true,
+        "input": {
+          "type": "string"
+        }
+      },
+      {
+        "name": "ENGINES_BUG_LOGGER_VOLUME_PATH",
+        "value": "/home/fs/data",
+        "mandatory": true,
+        "immutable": true,
+        "input": {
+          "type": "string"
+        }
+      }
+    ],
+    "framework_specific": {
+      "rake_tasks": [
+        {
+          "action": "db:migrate",
+          "always_run": true
+        },
+        {
+          "action": "db:seed"
+        }
+      ]
     }
   }
 }
